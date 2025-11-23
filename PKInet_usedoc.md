@@ -16,7 +16,7 @@ mim install mmdet\<3.0.0
 ```
 
 ```bash
-git clone https://gh-proxy.org/https://github.com/open-mmlab/mmrotate.git
+git clone https://github.com/open-mmlab/mmrotate.git
 cd mmrotate
 pip install -v -e .
 ```
@@ -27,7 +27,7 @@ python demo/image_demo.py demo/demo.jpg oriented_rcnn_r50_fpn_1x_dota_le90.py or
 ```
 
 ```bash
-git clone https://gh-proxy.org/https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet.git
+git clone https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet.git
 cd PKINet/
 mkdir data
 cd data
