@@ -18,7 +18,7 @@ max_keep_ckpts = 3  # TODO change
 # base_batch_size = (4 GPUs) x (2 samples per GPU)
 auto_scale_lr = dict(base_batch_size=8, enable=False)
 
-checkpoint = ''  # pretrain # noqa
+checkpoint = 'pretrain_weights/pkinet_t_pretrain.pth'  # pretrain # noqa
 # load_from = ''  # resume # noqa
 
 # model settings
