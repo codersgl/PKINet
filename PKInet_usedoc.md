@@ -1,3 +1,5 @@
+# 环境配置
+
 ```bash
 conda create --name openmmlab python=3.8 -y
 conda activate openmmlab
@@ -41,7 +43,7 @@ pip install -r requirements.txt
 pip install -v -e .
 ```
 
-
+# 数据准备
 
 ```bash
 oss cp oss://datasets/DOTA.zip /hy-tmp/projects/PKINet/data/DOTA
@@ -49,7 +51,7 @@ cd data/DOTA
 unzip DOTA.zip
 ```
 
-将images重命名为images1
+将 images 重命名为 images1
 
 ```
 cd test
@@ -74,7 +76,7 @@ cd labelTxt-v1.5/
 unzip DOTA-v1.5_val.zip
 ```
 
-```python
+```bash
 cd data
 mkdir DOTAv15
 cp -r DOTA/train/images DOTAv15/train/
@@ -84,9 +86,9 @@ mv DOTA/val/labelTxt-v1.5 DOTAv15/val/
 cp -r DOTA/test/images DOTAv15/test/
 ```
 
+# 数据预处理
 
-
-修改/hy-tmp/projects/PKINet/tools/data/dota/split/split_configs下的json文件中的`img_dirs`和`ann_dirs`为数据路径
+修改/hy-tmp/projects/PKINet/tools/data/dota/split/split_configs 下的 json 文件中的`img_dirs`和`ann_dirs`为数据路径
 
 执行
 
@@ -98,7 +100,9 @@ python tools/data/dota/split/img_split.py --base-json \
   tools/data/dota/split/split_configs/ss_test.json
 ```
 
-修改/hy-tmp/projects/PKINet/configs/_base_/datasets/dotav1.py中的data_root，train_dic, val_dic, test_dic为实际路径，
+修改/hy-tmp/projects/PKINet/configs/_base_/datasets/dotav1.py 中的 data_root，train_dic, val_dic, test_dic 为实际路径，
+
+## 训练和测试
 
 添加预训练权重
 
@@ -187,7 +191,7 @@ tmux ls
 tmux kill-session -t train
 ```
 
-```python
+```bash
 python tools/data/dota/split/img_split.py --base-json \
   tools/data/dota/split/split_configs/ss_trainval.json
 
@@ -199,4 +203,3 @@ python tools/data/dota/split/img_split.py --base-json \
 chmod +x ./tools/dist_test.sh
 ./tools/dist_test.sh configs/pkinet/pkinet-s_fpn_o-rcnn-dotav15-ss_le90.py work_dirs/pkinet-s_fpn_o-rcnn-dotav15-ss_le90/best_mAP_epoch_30.pth 4 --format-only --eval-options submission_dir=work_dirs/Task1_results_v15_s
 ```
-
